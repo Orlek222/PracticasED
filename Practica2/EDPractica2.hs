@@ -55,13 +55,13 @@ desconocida xs = and [ x<=y | (x,y) <- zip xs (tail xs) ]
 -------------------------------------------------------------------------------
 -- apartados a, b, e y f
 -- a)
-inserta :: (Ord a) => a -> [a] -> [a]elem
-inserta x s = undefined
+inserta :: (Ord a) => a -> [a] -> [a]
+inserta x list@(y:ys) = (takeWhile (<x) list) ++ [x] ++ (dropWhile(<x) list)
 
 
 -- b)
 inserta' :: (Ord a ) => a -> [a] -> [a]
-inserta' x [] = undefined
+inserta' x [] = [x]
 inserta' x (y:ys) = undefined
 
 -- e)
@@ -72,14 +72,17 @@ ordena xs = undefined
 -- f)  Utiliza para ello la función sorted definida en las transarencias
 
 
-{-
+
 -------------------------------------------------------------------------------
 -- Ejercicio 22
 -------------------------------------------------------------------------------
 binarios ::Integer -> [String]
 binarios 0 = [""]
-binarios x | x > 0 = undefined
+binarios n = map ('0':) previas ++ map ('1':) previas
+  where
+    previas = binarios (n - 1)
 
+{-
 -------------------------------------------------------------------------------
 -- Ejercicio 34
 -------------------------------------------------------------------------------
