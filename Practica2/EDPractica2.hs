@@ -22,14 +22,25 @@ import Test.QuickCheck
 -------------------------------------------------------------------------------
 distintos :: Eq a => [a] -> Bool
 distintos [] = True
-distintos (x:xs) = undefined
+distintos (x:xs)
+  |elem x xs = False
+  |otherwise = distintos xs
 
 -------------------------------------------------------------------------------
 -- Ejercicio 11
 -------------------------------------------------------------------------------
--- take'
--- drop'
 
+take'::Int->[a]->[a]
+take' 0 _ = []
+take' n [] = []
+take' n list = [x | (p,x) <- zip[0..(n-1)] list]
+
+
+drop' :: Int -> [a] -> [a]
+drop' 0 xs = xs
+drop' n [] = []
+drop' n list = [x | (p,x) <- zip [0..(length list)] list, p>=n]
+{-
 -------------------------------------------------------------------------------
 -- Ejercicio 13
 -------------------------------------------------------------------------------
@@ -42,7 +53,7 @@ desconocida xs = and [ x<=y | (x,y) <- zip xs (tail xs) ]
 -------------------------------------------------------------------------------
 -- apartados a, b, e y f
 -- a)
-inserta :: (Ord a) => a -> [a] -> [a]
+inserta :: (Ord a) => a -> [a] -> [a]elem
 inserta x s = undefined
 
 
@@ -106,3 +117,4 @@ cotizacion = [("apple", 116), ("intel", 35), ("google", 824), ("nvidia", 67)]
 -- Lista de ejercicios extra. Ejercicio [agrupar]
 -------------------------------------------------------------------------------
 -- agrupar. DIFICIL
+-}
