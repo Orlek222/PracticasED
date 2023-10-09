@@ -40,13 +40,15 @@ drop' :: Int -> [a] -> [a]
 drop' 0 xs = xs
 drop' n [] = []
 drop' n list = [x | (p,x) <- zip [0..(length list)] list, p>=n]
-{-
+
+
 -------------------------------------------------------------------------------
 -- Ejercicio 13
 -------------------------------------------------------------------------------
 desconocida :: (Ord a) => [a] -> Bool
 desconocida xs = and [ x<=y | (x,y) <- zip xs (tail xs) ]
 -- Qué hace?
+--Comprobar que una lista está ordenada ascendentemente
 
 -------------------------------------------------------------------------------
 -- Ejercicio 14
@@ -70,7 +72,7 @@ ordena xs = undefined
 -- f)  Utiliza para ello la función sorted definida en las transarencias
 
 
-
+{-
 -------------------------------------------------------------------------------
 -- Ejercicio 22
 -------------------------------------------------------------------------------
