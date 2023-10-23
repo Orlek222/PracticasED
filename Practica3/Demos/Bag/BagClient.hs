@@ -9,7 +9,7 @@
 module BagClient where
 
 import Data.Char(toLower)
-import DataStructures.Bag.SortedLinearBag
+import SortedLinearBag
 
 -- convertir una lista en una bolsa
 --
@@ -36,7 +36,7 @@ list2Bag = foldr insert empty
 -- [('a',5),('b',2),('c',1),('d',1),('r',2)]
 
 bag2List :: Ord a => Bag a -> [(a, Int)]
-bag2List = undefined
+bag2List bag = foldBag(\e oe s -> (e, oe):s) [] bag
 
 -- Determina si contiene una bolsa a un elemento
 --
