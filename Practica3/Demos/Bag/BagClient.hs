@@ -9,8 +9,7 @@
 module BagClient where
 
 import Data.Char(toLower)
-import SortedLinearBag
-
+import DataStructures.Bag.SortedLinearBag
 -- convertir una lista en una bolsa
 --
 -- BagClient> list2Bag "abracadabra"
@@ -44,7 +43,7 @@ bag2List bag = foldBag(\e oe s -> (e, oe):s) [] bag
 -- True
 
 contains :: Ord a => a -> Bag a -> Bool
-contains x = undefined
+contains x bag = occurrences x bag>=1
 
 -- número de veces que aparece el elemento que aparece más veces en una bolsa
 --
@@ -52,4 +51,5 @@ contains x = undefined
 -- 5
 
 maxOcurrences :: Ord a => Bag a -> Int
-maxOcurrences = undefined
+maxOcurrences bag = foldBag(\e oe s -> if oe>num then oe else num) num bag
+    where num = 0
