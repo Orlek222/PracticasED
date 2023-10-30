@@ -134,12 +134,12 @@ public class SortedArrayBag<T extends Comparable<? super T>> implements Bag<T> {
 			count[i]--;
 			if(count[i] == 0){
 				// desplaza los elementos a la izquierda
-				for (int j = nextFree; j > i; j--) {
-					value[j] = value[j + 1];
-					count[j] = count[j + 1];
+				for (int j = i; j < value.length; j++) {
+					if(j !=	 value.length-1){
+						value[j] = value[j + 1];
+						count[j] = count[j + 1];
+					}
 				}
-				//value[nextFree - 1] = null;
-				//count[nextFree - 1] = 0;
 				nextFree--;
 			}
 		}
