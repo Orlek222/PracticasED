@@ -39,9 +39,7 @@ public class SortedArrayBag<T extends Comparable<? super T>> implements Bag<T> {
 	private void ensureCapacity() {
 		if (nextFree == value.length) {
 			value = Arrays.copyOf(value, 2 * value.length);
-
-			// COMPLETAR
-
+			count = Arrays.copyOf(count, 2*count.length);
 		}
 	}
 
@@ -94,8 +92,7 @@ public class SortedArrayBag<T extends Comparable<? super T>> implements Bag<T> {
 	public void insert(T item) {
 		int i = locate(item);
 		if (value[i] != null && value[i].equals(item)) {
-
-			// COMPLETAR
+			count[i]++;
 
 		} else {
 			ensureCapacity();
@@ -105,8 +102,9 @@ public class SortedArrayBag<T extends Comparable<? super T>> implements Bag<T> {
 				count[j] = count[j - 1];
 			}
 
-			// COMPLETAR
-
+			value[i] = item;
+			count[i] = 1;
+			nextFree++;
 		}
 	}
 
@@ -117,11 +115,10 @@ public class SortedArrayBag<T extends Comparable<? super T>> implements Bag<T> {
 	public int occurrences(T item) {
 		int result = 0;
 		int i = locate(item);
-		if (value[i] != null && value[i].equals(item)) {
-
-			// COMPLETAR
-
+		if (value[i] == null || i>=nextFree || !value[i].equals(item)) {
+			return result;
 		}
+		result = count[i];
 		return result;
 	}
 
@@ -133,9 +130,19 @@ public class SortedArrayBag<T extends Comparable<? super T>> implements Bag<T> {
 	 */
 	public void delete(T item) {
 		int i = locate(item);
-
-		// COMPLETAR
-
+		if (value[i] != null && value[i].equals(item)){
+			count[i]--;
+			if(count[i] == 0){
+				// desplaza los elementos a la izquierda
+				for (int j = nextFree; j > i; j--) {
+					value[j] = value[j + 1];
+					count[j] = count[j + 1];
+				}
+				//value[nextFree - 1] = null;
+				//count[nextFree - 1] = 0;
+				nextFree--;
+			}
+		}
 	}
 
 	/**
