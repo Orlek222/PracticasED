@@ -11,8 +11,8 @@ public class BagTester {
 
 		// Seleccionar una de las dos implementaciones
 		Bag<Character> b = 
-				new SortedArrayBag<>();
-				//new SortedLinkedBag<>();
+				//new SortedArrayBag<>();
+				new SortedLinkedBag<>();
 
 		String cervantes =
 		 	  "En un lugar de la Mancha, de cuyo nombre no quiero acordarme, "
