@@ -7,7 +7,7 @@ In this case, this subject is taught in both Haskell and Java.
 
 For the first mid-term exam, students were asked to implement a two-lists dock in Haskell.
 
-Second examn is most probably going to be in Java.
+Second exam is most probably going to be in Java.
 
 Finally, the final exam is usually an implementation of a Data Structure in both languages.
 
