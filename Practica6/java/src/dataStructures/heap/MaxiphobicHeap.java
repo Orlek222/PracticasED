@@ -30,14 +30,30 @@ public class MaxiphobicHeap<T extends Comparable<? super T>> implements	Heap<T> 
 	}
 
 	private static <T extends Comparable<? super T>> Tree<T> merge(Tree<T> h1,	Tree<T> h2) {
+
+		Tree<T> raiz, pesado, ligero1, ligero2;
+
 		if (h1 == null)
 			return h2;
 		if (h2 == null)
 			return h1;
+		else if(h1.elem.compareTo(h2.elem)<=0){
+			raiz = h1;
+			pesado = h2;
+			ligero1 = h1.left;
+			ligero2 = h1.right;
+		}
+		else{
+			raiz = h2;
+			pesado = h1;
+			ligero1 = h2.left;
+			ligero2 = h2.right;
+		}
 
-		// COMPLETAR AQUI
+		raiz.left = pesado;
+		raiz.right = merge(ligero1, ligero2);
 
-		return null;
+		return raiz;
 	}
 
 	private Tree<T> root;
