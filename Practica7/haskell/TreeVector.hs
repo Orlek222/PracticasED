@@ -44,8 +44,13 @@ data BinTree a = Leaf a
 ...
 
 -}
-
-vector = undefined
+vector:: Int -> a -> Vector a
+vector n x 
+  | n < 0 = error "Negative exponent"
+  |otherwise = TreeVector (2^n) (generateTree n x)
+    where
+      generateTree 0 x = Leaf x
+      generateTree n x = Node (generateTree (n-1) x) (generateTree (n-1) x)
 
 -- | Exercise b. size
 
@@ -59,7 +64,8 @@ vector = undefined
 
 -}
 
-size = undefined
+size:: Vector a -> Int 
+size v@(TreeVector n b) = n
 
 -- | Exercise c. get
 
@@ -80,7 +86,12 @@ size = undefined
 
 -}
 
-get = undefined
+get :: Int -> Vector a -> a
+get _ v@(TreeVector n (Leaf x)) = x
+get i v@(TreeVector n (Node lt rt))
+  | i >= size v || i < 0 = error "index out of bounds"
+  | even i = get (div i 2) (TreeVector n lt)
+  | otherwise = get (div i 2) (TreeVector n rt)
 
 -- | Exercise d. set
 
@@ -122,7 +133,13 @@ get = undefined
 
 -}
 
-set = undefined
+set :: Eq a => Int -> a -> Vector a -> Vector a
+set i x (TreeVector n tree) = TreeVector n (set' i x n tree)
+  where
+    set' i x n (Leaf y) = Leaf x
+    set' i x n (Node lt rt)
+      | even i = Node (set' (div i 2) x n lt) rt
+      | otherwise = Node lt (set' (div i 2) x n rt)
 
 -- | Exercise e. mapVector
 
