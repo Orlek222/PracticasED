@@ -163,7 +163,12 @@ set i x (TreeVector n tree) = TreeVector n (set' i x n tree)
 
 -}
 
-mapVector = undefined
+mapVector :: Eq b => (a->b) -> Vector a -> Vector b
+mapVector f v@(TreeVector n tree) = TreeVector n (map' f tree)
+  where 
+    map' f (Leaf x) = Leaf (f x)
+    map' f (Node lt rt) = Node (map' f lt) (map' f rt)
+
 
 -- | Exercise f. intercalate
 
@@ -180,8 +185,10 @@ mapVector = undefined
 
 -}
 
-intercalate = undefined
-
+intercalate :: [a] -> [a] -> [a]
+intercalate [] _ = []
+intercalate _ [] = []
+intercalate (x:xs) (y:ys) = x:y:(intercalate xs ys)
 -- | Exercise g. toList
 
 {- |
@@ -194,7 +201,11 @@ intercalate = undefined
 
 -}
 
-toList = undefined
+toList :: Vector a -> [a]
+toList v@(TreeVector _ tree) = toListTree tree
+  where 
+    toListTree (Leaf x) = [x]
+    toListTree (Node lt rt) = intercalate (toListTree lt) (toListTree rt)
 
 -- | Exercise h. Complexity
 
@@ -230,7 +241,11 @@ False
 
 -}
 
-isPowerOfTwo = undefined
+isPowerOfTwo :: Int -> Bool
+isPowerOfTwo n
+  |n == 1 = True
+  |even n = isPowerOfTwo (div n 2)
+  |otherwise = False
 
 -- | Exercise j. fromList
 
@@ -256,7 +271,19 @@ isPowerOfTwo = undefined
 
 -}
 
-fromList = undefined
+fromList :: [a] -> Vector a
+fromList xs
+  |not (isPowerOfTwo (length xs)) = error "length is not a power of two"
+  |otherwise = TreeVector (length xs) (fromListTree xs)
+    where
+      fromListTree [x] = Leaf x
+      fromListTree xs = Node (fromListTree evens) (fromListTree odds)
+        where
+          (evens, odds) = splitEvenOdd xs
+          splitEvenOdd [] = ([], [])
+          splitEvenOdd (x:y:rest) = (x:xs, y:ys)
+            where
+              (xs, ys) = splitEvenOdd rest
 
 -------------------------------------------------------------------------------
 -- Do not write any code below
