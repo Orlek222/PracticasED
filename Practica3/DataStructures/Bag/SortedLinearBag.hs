@@ -154,11 +154,11 @@ isEmpty_insert x s = isEmpty (insert x s) == False
 
 occurrences_empty x = occurrences x empty == 0
 occurrences_insert_1 x s = occurrences x (insert x s) >= 1
-occurrences_insert_2 x y s = x /= y ==> occurrences x (insert y s) == 0
+occurrences_insert_2 x y s = x /= y ==> occurrences x (insert y s) == occurrences x s
 
 -- transformadores
 delete_empty x = delete x empty == Empty
-delete_insert_1 x s = delete x (insert x s) == undefined
+delete_insert_1 x s = delete x (insert x s) == s
 delete_insert_2 x y s  = x /= y ==> delete x (insert y s) == undefined
 
 --------------------------------------------------------
