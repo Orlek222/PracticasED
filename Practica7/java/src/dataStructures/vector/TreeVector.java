@@ -6,6 +6,7 @@
 
 package dataStructures.vector;
 
+import dataStructures.list.ArrayList;
 import dataStructures.list.List;
 
 public class TreeVector<T> {
@@ -30,19 +31,19 @@ public class TreeVector<T> {
 
         @Override
         public E get(int i) {
-        	//to do
-            return null;
+        	return value;
         }
 
         @Override
         public void set(int i, E x) {
-        	//to do
+        	value = x;
         }
 
         @Override
         public List<E> toList() {
-        	//to do
-            return null;
+        	List<E> lista = new ArrayList<>();
+            lista.append(value);
+            return lista;
         }
     }
 
@@ -57,7 +58,7 @@ public class TreeVector<T> {
 
         @Override
         public E get(int i) {
-        	//to do
+
             return null;
         }
 
