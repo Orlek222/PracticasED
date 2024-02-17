@@ -48,7 +48,7 @@ For the first mid-term exam, students were asked to implement a Two-Lists Dock i
 
 Second exam was to implement a Splay Tree in Java.
 
-The final exam was an implementation of a Tree-like Data Structure in both languages.
+The final exam was an implementation of a TreeBitSet in both Java and Haskell.
 
 ## My grades   
 
