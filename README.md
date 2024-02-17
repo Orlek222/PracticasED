@@ -43,6 +43,8 @@ Finally, the final exam is usually an implementation of a Data Structure in both
 
 | Exams                     | Grade      | %    |
 | --------------------------| ---------- | ---- |
-| First Exam: Linear DS     |        9.0 | 15 % |
-| Second Exam: Non-Linear DS|            | 15 % |
-| Final Exam                |            | 70 % |
+| First Exam: Linear DS     |    9.00    | 15 % |
+| Second Exam: Non-Linear DS|    1.50    | 15 % |
+| Final Exam (Java)         |    6.80    | 35 % |
+| Final Exam (Haskell)      |    6.80    | 35 % |
+| Final mark                |    6.33    | 100% |
