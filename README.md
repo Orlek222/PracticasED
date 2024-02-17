@@ -29,15 +29,26 @@ Haskell:
 Java:
 [MaxiphobicHeap.java](https://github.com/Orlek222/PracticasED/blob/main/Practica6/java/src/dataStructures/heap/MaxiphobicHeap.java)
 
+### Seventh
+
+The point of this one was to implement a Vector type by using a tree.
+
+Haskell:
+[TreeVector.hs](https://github.com/Orlek222/PracticasED/blob/main/Practica7/haskell/TreeVector.hs)
+
+Java: UNFINISHED
+[TreeVector.java](https://github.com/Orlek222/PracticasED/blob/main/Practica7/java/src/dataStructures/vector/TreeVector.java)
+
+
 ## Exams
 
 In this case, this subject is taught in both Haskell and Java.
 
 For the first mid-term exam, students were asked to implement a Two-Lists Dock in Haskell.
 
-Second exam is most probably going to be in Java.
+Second exam was to implement a Splay Tree in Java.
 
-Finally, the final exam is usually an implementation of a Data Structure in both languages.
+The final exam was an implementation of a Tree-like Data Structure in both languages.
 
 ## My grades   
 
